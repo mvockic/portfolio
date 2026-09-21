@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { META } from "../data/content";
 import { useTyping } from "../hooks/useTyping";
 import Terminal from "./Terminal";
+
+const LOOP_PAUSE = 30000;
 
 function Cursor() {
   return <span className="text-accent font-bold animate-pulse">▌</span>;
@@ -8,12 +11,33 @@ function Cursor() {
 
 export default function Hero() {
   const line1 = `const developer = "${META.name}";`;
-  const line2 = 'const focus = ["React", "Flask", "AWS", "Healthcare"];';
+  const line2 = 'const focus = ["React", "Flask", "AWS"];';
   const line3 = `// ${META.tagline}`;
+  const [animationRun, setAnimationRun] = useState(0);
+  const animationDuration =
+    600 +
+    line1.length * 35 +
+    300 +
+    line2.length * 30 +
+    300 +
+    line3.length * 30;
 
-  const t1 = useTyping(line1, 35, 600);
-  const t2 = useTyping(line2, 30, 600 + line1.length * 35 + 300);
-  const t3 = useTyping(line3, 30, 600 + line1.length * 35 + 300 + line2.length * 30 + 300);
+  const t1 = useTyping(line1, 35, 600, animationRun);
+  const t2 = useTyping(line2, 30, 600 + line1.length * 35 + 300, animationRun);
+  const t3 = useTyping(
+    line3,
+    30,
+    600 + line1.length * 35 + 300 + line2.length * 30 + 300,
+    animationRun,
+  );
+
+  useEffect(() => {
+    const loopTimeout = setTimeout(() => {
+      setAnimationRun((run) => run + 1);
+    }, animationDuration + LOOP_PAUSE);
+
+    return () => clearTimeout(loopTimeout);
+  }, [animationDuration]);
 
   return (
     <section
@@ -25,13 +49,15 @@ export default function Hero() {
         <div>
           {/* Floating code block */}
           <div className="glass-card overflow-hidden shadow-2xl shadow-black/50 mb-10">
-            <div className="flex items-center gap-2 px-4 py-3 bg-surface border-b border-border">
-              <span className="w-3 h-3 rounded-full bg-red-500" />
-              <span className="w-3 h-3 rounded-full bg-accent" />
-              <span className="w-3 h-3 rounded-full bg-emerald-400" />
-              <span className="ml-3 font-mono text-xs text-muted">
+            <div className="flex items-center px-4 py-3 bg-surface border-b border-border">
+              <span className="font-mono text-xs text-muted">
                 portfolio.js
               </span>
+              <div className="ml-auto flex items-center gap-2" aria-hidden="true">
+                <span className="w-3 h-3 rounded-full bg-accent" />
+                <span className="w-3 h-3 rounded-full bg-emerald-400" />
+                <span className="w-3 h-3 rounded-full bg-red-500" />
+              </div>
             </div>
             <div className="p-6 font-mono text-sm sm:text-base leading-[2.2]">
               <div>
@@ -66,9 +92,7 @@ export default function Hero() {
             Junior software developer at{" "}
             <span className="text-gray-100 font-medium">Vivo Surgery</span>.
             <br />
-            Mohawk College grad. I build React dashboards, Flask APIs, and AWS
-            infrastructure for healthcare — and side projects that solve real
-            problems.
+            Building and designing products that solve real problems.
           </p>
 
           {/* CTAs */}
