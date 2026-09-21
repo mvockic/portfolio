@@ -179,7 +179,7 @@ export default function Projects() {
     <section id="projects" className="py-24">
       <div className="section-container">
         <ScrollReveal>
-          <SectionHeader label="What I've Built" />
+          <SectionHeader label="Some Recent Projects" />
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-6 mt-12">
