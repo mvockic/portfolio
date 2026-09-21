@@ -1,7 +1,7 @@
 export const META = {
   name: "Marko",
   title: "Software Developer",
-  email: "markovockicc@email.com",
+  email: "markovockicc@gmail.com",
   github: "https://github.com/mvockic",
   linkedin: "https://linkedin.com/in/markovockic",
   tagline: "Building software that matters.",
@@ -100,57 +100,61 @@ export const PROJECTS = [
 export const SKILLS = [
   {
     category: "Languages",
+    description: "The tools I reach for to build and automate.",
     items: [
-      { name: "Python", level: 90 },
-      { name: "JavaScript", level: 85 },
-      { name: "TypeScript", level: 70 },
-      { name: "Java", level: 60 },
-      { name: "SQL", level: 80 },
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "SQL",
     ],
   },
   {
     category: "Frontend",
+    description: "Interfaces for clinical and operational workflows.",
     items: [
-      { name: "React", level: 85 },
-      { name: "Next.js", level: 70 },
-      { name: "Tailwind CSS", level: 80 },
-      { name: "HTML/CSS", level: 90 },
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "HTML/CSS",
     ],
   },
   {
     category: "Backend",
+    description: "APIs, data services, and search systems.",
     items: [
-      { name: "Flask", level: 90 },
-      { name: "REST APIs", level: 85 },
-      { name: "PostgreSQL", level: 80 },
-      { name: "pgvector", level: 70 },
+      "Flask",
+      "REST APIs",
+      "PostgreSQL",
     ],
   },
   {
     category: "Cloud & DevOps",
+    description: "Shipping, hosting, and maintaining real systems.",
     items: [
-      { name: "AWS (EC2, S3)", level: 75 },
-      { name: "Docker", level: 70 },
-      { name: "WSL2", level: 80 },
-      { name: "Git", level: 85 },
+      "AWS (EC2, S3)",
+      "Docker",
+      "WSL2",
+      "Git",
     ],
   },
   {
     category: "Domain Knowledge",
+    description: "The constraints and standards behind the work.",
     items: [
-      { name: "FHIR R4", level: 75 },
-      { name: "HL7", level: 60 },
-      { name: "HIPAA", level: 70 },
-      { name: "CASL", level: 65 },
+      "FHIR R4",
+      "HL7",
+      "HIPAA",
+      "CASL",
     ],
   },
   {
     category: "AI / ML",
+    description: "Practical integrations, not AI for its own sake.",
     items: [
-      { name: "RAG Pipelines", level: 75 },
-      { name: "Claude API", level: 80 },
-      { name: "sentence-transformers", level: 70 },
-      { name: "LLM Integration", level: 75 },
+      "LLM Integration",
+      "sentence-transformers",
+      "RAG Pipelines",
     ],
   },
 ];
@@ -212,7 +216,7 @@ export const TERMINAL_COMMANDS = {
      React → Flask → AWS (HIPAA)
   4. Construction Tools  [Shipped]
      Python invoicing for Ang Construction`,
-  contact: `Email:    your@email.com
+  contact: `Email:    markovockicc@gmail.com
   GitHub:   github.com/mvockic
   LinkedIn: linkedin.com/in/markovockic`,
 };

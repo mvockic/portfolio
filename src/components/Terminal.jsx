@@ -49,13 +49,15 @@ export default function Terminal() {
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title bar */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-surface border-b border-border">
-        <span className="w-3 h-3 rounded-full bg-red-500" />
-        <span className="w-3 h-3 rounded-full bg-accent" />
-        <span className="w-3 h-3 rounded-full bg-emerald-400" />
-        <span className="ml-3 font-mono text-xs text-muted">
+      <div className="flex items-center px-4 py-3 bg-surface border-b border-border">
+        <span className="font-mono text-xs text-muted">
           marko@portfolio ~ %
         </span>
+        <div className="ml-auto flex items-center gap-2" aria-hidden="true">
+          <span className="w-3 h-3 rounded-full bg-accent" />
+          <span className="w-3 h-3 rounded-full bg-emerald-400" />
+          <span className="w-3 h-3 rounded-full bg-red-500" />
+        </div>
       </div>
 
       {/* Terminal body */}

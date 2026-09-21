@@ -1,46 +1,35 @@
 import { SKILLS } from "../data/content";
-import { useInView } from "../hooks/useInView";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeader from "./SectionHeader";
 
-function SkillBar({ name, level, delay, isInView }) {
+function SkillTag({ name, index }) {
   return (
-    <div className="space-y-1.5">
-      <div className="flex justify-between items-baseline">
-        <span className="font-sans text-sm text-gray-300">{name}</span>
-        <span className="font-mono text-[11px] text-muted">{level}%</span>
-      </div>
-      <div className="h-1.5 bg-surface rounded-full overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-accent/80 to-accent rounded-full transition-all duration-1000 ease-out"
-          style={{
-            width: isInView ? `${level}%` : "0%",
-            transitionDelay: `${delay}ms`,
-          }}
-        />
-      </div>
-    </div>
+    <span
+      className="inline-flex items-center gap-2 border border-border bg-surface/70 px-3 py-2 rounded-md font-mono text-xs text-gray-300 transition-colors hover:border-accent/60 hover:text-gray-100"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-accent/70" aria-hidden="true" />
+      {name}
+    </span>
   );
 }
 
 function SkillCategory({ group, index }) {
-  const [ref, isInView] = useInView({ threshold: 0.2 });
-
   return (
     <ScrollReveal delay={index * 80}>
-      <div ref={ref} className="glass-card p-6">
-        <h4 className="font-mono text-xs text-accent uppercase tracking-[2px] mb-5">
+      <div className="glass-card p-6 h-full">
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h4 className="font-mono text-xs text-accent uppercase tracking-[2px]">
           {group.category}
-        </h4>
-        <div className="space-y-4">
-          {group.items.map((item, i) => (
-            <SkillBar
-              key={item.name}
-              name={item.name}
-              level={item.level}
-              delay={i * 100}
-              isInView={isInView}
-            />
+          </h4>
+          <span className="font-mono text-[10px] text-muted/60">0{index + 1}</span>
+        </div>
+        <p className="font-sans text-sm text-muted leading-relaxed mb-5">
+          {group.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {group.items.map((item, itemIndex) => (
+            <SkillTag key={item} name={item} index={itemIndex} />
           ))}
         </div>
       </div>
