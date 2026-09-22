@@ -11,7 +11,7 @@ function Cursor() {
 
 export default function Hero() {
   const line1 = `const developer = "${META.name}";`;
-  const line2 = 'const focus = ["React", "Flask", "AWS"];';
+  const line2 = 'const focus = ["Python", "AI / ML", "TypeScript + React"];';
   const line3 = `// ${META.tagline}`;
   const [animationRun, setAnimationRun] = useState(0);
   const animationDuration =
@@ -89,8 +89,7 @@ export default function Hero() {
 
           {/* Bio */}
           <p className="font-sans text-muted text-lg leading-relaxed max-w-lg">
-            Junior software developer at{" "}
-            <span className="text-gray-100 font-medium">Vivo Surgery</span>.
+            Software Developer.
             <br />
             Building and designing products that solve real problems.
           </p>
