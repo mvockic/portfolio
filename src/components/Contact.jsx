@@ -3,8 +3,6 @@ import { META } from "../data/content";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeader from "./SectionHeader";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-
 const inputClasses =
   "w-full bg-surface border border-border rounded-lg px-4 py-3 text-sm text-gray-100 font-sans placeholder:text-muted/60 focus:outline-none focus:border-accent transition-colors";
 
@@ -23,7 +21,7 @@ export default function Contact() {
     setError("");
 
     try {
-      const res = await fetch(`${API_URL}/api/contact`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
