@@ -5,7 +5,7 @@ import requests
 from flask import Flask, jsonify, request
 
 RESEND_API_KEY = os.environ.get("RESEND_API_KEY")
-CONTACT_TO_EMAIL = os.environ.get("CONTACT_TO_EMAIL")
+CONTACT_TO_EMAIL = os.environ.get("CONTACT_TO_EMAIL", "markovockicc@gmail.com")
 CONTACT_FROM_EMAIL = os.environ.get("CONTACT_FROM_EMAIL")
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
@@ -44,7 +44,10 @@ def contact():
             timeout=10,
         )
         resp.raise_for_status()
-    except requests.RequestException:
+    except requests.RequestException as exc:
+        # Surface Resend's reason (bad key, unverified sender, etc.) in the Vercel logs.
+        detail = exc.response.text if exc.response is not None else str(exc)
+        print(f"Resend send failed: {detail}")
         return jsonify(ok=False, error="Couldn't send your message right now. Please try again later."), 500
 
     return jsonify(ok=True)
